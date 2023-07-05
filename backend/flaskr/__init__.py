@@ -11,6 +11,7 @@ QUESTIONS_PER_PAGE = 10
 
 # paginate question (QUESTIONS_PER_PAGE questions per page)
 
+
 def paginate_questions(request, selection):
     page = request.args.get('page', 1, type=int)
     start = (page - 1) * QUESTIONS_PER_PAGE
@@ -202,8 +203,7 @@ def create_app(test_config=None):
         })
 
     # get random questions to play the quiz.
-    # returned question is not one of the previous questions
-
+    # reterned question is not one of the previous questions
     @app.route('/quizzes', methods=['POST'])
     def play_game():
         body = request.get_json()
