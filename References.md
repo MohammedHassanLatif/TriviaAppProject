@@ -1,9 +1,6 @@
 lcsol - Udacitrivia
 https://github.com/lcsol/Udacitrivia
 
-Chao Lin - Udacitrivia
-https://github.com/lcsol/Udacitrivia
-
 MarsIncarnate - Udacitrivia
 https://github.com/MarsIncarnate/udacitrivia
 
