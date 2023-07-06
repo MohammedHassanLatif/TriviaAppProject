@@ -3,6 +3,7 @@ from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from sqlalchemy.sql.expression import func
+from json import JSONDecodeError
 import random
 
 from models import setup_db, Question, Category
@@ -81,7 +82,7 @@ def create_app(test_config=None):
     # DELETE question using a question ID
     # When you click the trash icon next to a question
 
-    @app.route('/questions/<int:question_id>', methods=['DELETE'])
+    @app.route('/questions/<int:question_id>', methods=['DELETED'])
     def delete_question(question_id):
         try:
             question = Question.query.filter(
