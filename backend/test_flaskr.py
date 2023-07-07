@@ -13,7 +13,7 @@ class TriviaTestCase(unittest.TestCase):
         """Define test variables and initialize app."""
         self.app = create_app()
         self.client = self.app.test_client
-        self.database_name = 'trivia_test'
+        # self.database_name = 'trivia_test'
         self.database_path = 'postgresql://mohammed.latif@localhost:5430/trivia_test'
 
         self.new_question = {
@@ -95,10 +95,10 @@ class TriviaTestCase(unittest.TestCase):
 
 
     def test_create_question(self):
-        res = self.client().post("/questions", json=self.new_question)
+        res = self.client().post("/questions/add", json=self.new_question)
         data = json.loads(res.data)
 
-        self.assertEqual(res.status, 200)
+        self.assertEqual(res.status, '200 OK')
         self.assertEqual(data["success"], True)
         #self.assertTrue(data["created"])
         self.assertTrue(len(data["questions"]))
@@ -152,7 +152,7 @@ class TriviaTestCase(unittest.TestCase):
 
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data["success"], False)
-
+    
 # Make the tests conveniently executable
 if __name__ == "__main__":
     unittest.main()

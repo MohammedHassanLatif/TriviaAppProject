@@ -1,4 +1,4 @@
-#!/Users/mohammed.latif/projects/Udacity/Projects/TriviaAppProject/myenv/bin/python3.10
+#!/Users/mohammed.latif/projects/Udacity/Projects/TriviaAppProject/myenv/bin/python3.9
 # -*- coding: utf-8 -*-
 import re
 import sys
