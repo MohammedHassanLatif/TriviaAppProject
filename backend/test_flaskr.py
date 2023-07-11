@@ -15,6 +15,7 @@ class TriviaTestCase(unittest.TestCase):
         self.client = self.app.test_client
         # self.database_name = 'trivia_test'
         self.database_path = 'postgresql://mohammed.latif@localhost:5430/trivia_test'
+        setup_db(self.app, self.database_path)
 
         self.new_question = {
             "question": "what is mars", 
