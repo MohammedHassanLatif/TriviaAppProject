@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flaskr import create_app
 from models import setup_db, Question, Category
 
+
 class TriviaTestCase(unittest.TestCase):
     """This class represents the trivia test case"""
 
@@ -18,11 +19,11 @@ class TriviaTestCase(unittest.TestCase):
         setup_db(self.app, self.database_path)
 
         self.new_question = {
-            "question": "what is mars", 
-            "answer": "mars is the most underrated god", 
-            "difficulty": "5", 
+            "question": "what is mars",
+            "answer": "mars is the most underrated god",
+            "difficulty": "5",
             "category": "3"
-            }
+        }
 
         # binds the app to the current context
         with self.app.app_context():
@@ -30,7 +31,7 @@ class TriviaTestCase(unittest.TestCase):
             self.db.init_app(self.app)
             # create all tables
             self.db.create_all()
-    
+
     def tearDown(self):
         """Executed after reach test"""
         pass
@@ -94,14 +95,13 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data["success"], False)
         self.assertEqual(data["message"], "Unprocessable")
 
-
     def test_create_question(self):
         res = self.client().post("/questions/add", json=self.new_question)
         data = json.loads(res.data)
 
         self.assertEqual(res.status, '200 OK')
         self.assertEqual(data["success"], True)
-        #self.assertTrue(data["created"])
+        # self.assertTrue(data["created"])
         self.assertTrue(len(data["questions"]))
 
     def test_creation_not_allowed(self):
@@ -111,7 +111,6 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 405)
         self.assertEqual(data["success"], False)
         self.assertEqual(data["message"], "method not allowed")
-
 
     def test_retrieve_categorized_questions(self):
         res = self.client().get("/categories/1/questions")
@@ -128,7 +127,11 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data["message"], "resource not found")
 
     def test_play_trivia(self):
-        quiz = {"previous_questions":[], "quiz_category":{"type": "Science", "id": 1}}
+        quiz = {
+            "previous_questions": [],
+            "quiz_category": {
+                "type": "Science",
+                "id": 1}}
         res = self.client().post("/quizzes", json=quiz)
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
@@ -153,7 +156,8 @@ class TriviaTestCase(unittest.TestCase):
 
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data["success"], False)
-    
+
+
 # Make the tests conveniently executable
 if __name__ == "__main__":
     unittest.main()
