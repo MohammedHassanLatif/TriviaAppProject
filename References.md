@@ -12,3 +12,6 @@ https://github.com/mostafaelspagh0/Udacitrivia
 
 KheteshS - Full Stack API Final Project
 https://github.com/KheteshS/UDACITRIVIA
+
+Arnold1052 - Udacitrivia
+https://github.com/Arnold1052/Udacitrivia
