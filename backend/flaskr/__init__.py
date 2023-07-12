@@ -4,7 +4,6 @@ from flask_cors import CORS
 import random
 from typing import cast
 from models import setup_db, Question, Category
-from dotenv import load_dotenv
 
 QUESTIONS_PER_PAGE = 10
 
