@@ -1,9 +1,13 @@
+import os
+import re
+from unittest import result
 from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import random
 from typing import cast
 from models import setup_db, Question, Category
+from dotenv import load_dotenv
 
 QUESTIONS_PER_PAGE = 10
 
@@ -22,8 +26,10 @@ def paginate_questions(request, selection):
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
-    setup_db(app)
-    CORS(app)
+    with app.app_context():
+        setup_db(app)
+        load_dotenv()
+        CORS(app)
 
     @app.after_request
     def after_request(response):

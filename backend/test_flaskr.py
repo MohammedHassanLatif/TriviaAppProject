@@ -2,10 +2,10 @@ import os
 import unittest
 import json
 from flask_sqlalchemy import SQLAlchemy
-
+from dotenv import load_dotenv
 from flaskr import create_app
 from models import setup_db, Question, Category
-
+from os import environ as env 
 
 class TriviaTestCase(unittest.TestCase):
     """This class represents the trivia test case"""
@@ -18,7 +18,7 @@ class TriviaTestCase(unittest.TestCase):
         #self.database_path = "postgres://{}/{}".format('localhost:5432', self.database_name)
         #setup_db(self.app, self.database_path)
         self.database_path = "postgresql://{}:{}@{}/{}".format(
-            "postgres", "mohammed.latif", "localhost:5430", self.database_name
+            env["DB_USER"], env["DB_PASSWORD"], env["DB_HOST"], env["DB_NAME"]
         )        
         setup_db(self.app, self.database_path)
 
